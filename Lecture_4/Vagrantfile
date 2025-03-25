@@ -1,0 +1,49 @@
+Vagrant.configure("2") do |config|
+  IMAGE = "bento/ubuntu-24.04"
+
+  # ---------- VM1 ----------
+  config.vm.define "vm1" do |vm1|
+    vm1.vm.box = IMAGE
+    vm1.vm.hostname = "vm1"
+    vm1.vm.network "public_network", type: "dhcp", bridge: "en0: Wi-Fi"
+    vm1.vm.synced_folder "./shared_vm1", "/vagrant_data"
+    vm1.vm.provision "shell", inline: <<-SHELL
+      sudo apt-get update -y
+      sudo apt-get install -y nginx
+    SHELL
+  end
+
+  # ---------- VM2 ----------
+  config.vm.define "vm2" do |vm2|
+    vm2.vm.box = IMAGE
+    vm2.vm.hostname = "vm2"
+    vm2.vm.network "private_network", ip: "192.168.56.10"
+    vm2.vm.synced_folder "./shared_vm2", "/vagrant_data"
+    vm2.vm.provision "shell", path: "provision_vm2.sh"
+  end
+
+  # ---------- VM3 ----------
+  config.vm.define "vm3" do |vm3|
+    vm3.vm.box = IMAGE
+    vm3.vm.hostname = "vm3"
+#     vm3.vm.network "public_network", ip: "192.168.1.100", bridge: "en0: Wi-Fi"
+    vm3.vm.network "forwarded_port", guest: 80, host: 8083
+    vm3.vm.synced_folder "./shared_vm3", "/vagrant_data"
+    vm3.vm.provision "shell", path: "provision_vm3.sh"
+  end
+
+  # ---------- Копії VM1 (додаткове завдання) ----------
+  def setup_vm(vm, name)
+    vm.vm.box = IMAGE
+    vm.vm.hostname = name
+    vm.vm.network "public_network", type: "dhcp", bridge: "en0: Wi-Fi"
+    vm.vm.synced_folder "./shared_vm1", "/vagrant_data"
+    vm.vm.provision "shell", path: "provision_vm1.sh"
+  end
+
+  %w[vm1a vm1b vm1c].each do |name|
+    config.vm.define name do |vm|
+      setup_vm(vm, name)
+    end
+  end
+end

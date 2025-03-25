@@ -1,0 +1,1 @@
+echo "This is the common folder! Hello from host-machine 🖐️" > shared_vm1/test.txt
