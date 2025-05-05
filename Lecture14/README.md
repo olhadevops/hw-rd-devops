@@ -14,7 +14,7 @@ docker-compose up -d
 MongoDB буде доступна на mongodb://127.0.0.1:27017
 > У Docker `0.0.0.0:27017->27017`, це означає, що MongoDB слухає на всіх інтерфейсах. Для підключення з локальної машини використовуємо саме `127.0.0.1` або `localhost`.
 
-![img_1.png](img_1.png)
+![img_1.png](screenshots/img_1.png)
 
 ## 📦 Встановлення
 
@@ -24,7 +24,7 @@ cd ./Lecture14
 nvm use
 node -v
 ```
-![img.png](img.png)
+![img.png](screenshots/img.png)
 
 2. Встановлення необхідних бібліотек для роботи з монго
 ```shell
