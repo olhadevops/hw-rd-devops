@@ -1,0 +1,40 @@
+Клієнти старше 30:
+[
+  {
+    "_id": "6819023c70aa304315778a5f",
+    "client_id": 2,
+    "name": "Ivan Petrov",
+    "age": 35,
+    "email": "ivan@example.com"
+  },
+  {
+    "_id": "6819023c70aa304315778a60",
+    "client_id": 3,
+    "name": "Oleh Bondarenko",
+    "age": 42,
+    "email": "oleh@example.com"
+  }
+]
+
+Тренування середньої складності:
+[
+  {
+    "_id": "6819023c70aa304315778a63",
+    "workout_id": 201,
+    "description": "Cardio session",
+    "difficulty": "medium"
+  }
+]
+
+Членство клієнта client_id=2:
+[
+  {
+    "_id": "6819023c70aa304315778a62",
+    "membership_id": 102,
+    "client_id": 2,
+    "start_date": "2025-03-01",
+    "end_date": "2025-09-01",
+    "type": "Semi-Annual"
+  }
+]
+
