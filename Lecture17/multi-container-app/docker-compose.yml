@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  proxy:
+    image: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - web
+    networks:
+      - appnet
+
+  web:
+    image: nginx
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+    expose:
+      - "80"
+    networks:
+      - appnet
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: example
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - appnet
+
+  cache:
+    image: redis
+    networks:
+      - appnet
+
+volumes:
+  db-data:
+
+networks:
+  appnet:
