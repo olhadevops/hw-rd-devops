@@ -1,0 +1,20 @@
+1. ✅ Redis успішно розгорнутий!
+
+Щоб підключитися до Redis всередині кластера:
+
+  kubectl exec -it -n {{ .Release.Namespace }} {{ include "redis-falco.fullname" . }}-0 -- redis-cli
+
+Або щоб підключитися локально:
+
+  kubectl port-forward -n {{ .Release.Namespace }} svc/{{ include "redis-falco.fullname" . }} 6379:6379
+
+Після чого виконай:
+
+  redis-cli -h 127.0.0.1 -p 6379 ping
+
+---
+
+🎯 Falco встановлено як DaemonSet (запущено на кожному вузлі).
+Перевір логи:
+
+  kubectl logs -n kube-system -l app=falco --tail=30
