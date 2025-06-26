@@ -7,7 +7,7 @@
 ```bash
 terraform --version
 ```
-![img.png](img.png)
+![img.png](screenshots/img.png)
 
 - додаємо Policy для доступу до AWS:
 ```json
@@ -523,19 +523,19 @@ cd ./Lecture30/.infrastructure
 ```bash
 terraform init
 ```
-![img_1.png](img_1.png)
+![img_1.png](screenshots/img_1.png)
 
 - планування:
 ```bash
 terraform plan
 ```
-![img_2.png](img_2.png)
+![img_2.png](screenshots/img_2.png)
 
 - застосування конфігурації:
 ```bash
 terraform apply --auto-approve
 ```
-![img_3.png](img_3.png)
+![img_3.png](screenshots/img_3.png)
 
 ## Імпортування наявних ресурсів в Terraform-конфігурації
 
@@ -543,7 +543,7 @@ terraform apply --auto-approve
 
 - Створюємо ще один EC2 інстанс у публічній підмережі та назвемо ManualWebServer.
 - Додаємо до нього Security Group з назвою ManualSecurityGroup з дозволом вхідного трафіку по порту 8080.
-![img_4.png](img_4.png)
+![img_4.png](screenshots/img_4.png)
 
 - ID EC2 інстансу: `i-0f7aa8924e1e6fe69`
 - ID Security Group: `sg-00f9c25bc997f1bcb`
@@ -559,7 +559,7 @@ terraform import aws_instance.manual_ec2_imported i-0f7aa8924e1e6fe69 # ID EC2
 terraform import aws_security_group.manual_sg_imported sg-00f9c25bc997f1bcb # ID SG
 ```
 
-![img_6.png](img_6.png)
+![img_6.png](screenshots/img_6.png)
 
 - Після успішного імпорту, Terraform оновив свій state-файл, але не файли .tf
 - Виконаємо наступну команду, щоб Terraform мав повну інформацію про ці ресурси:
@@ -568,7 +568,7 @@ terraform plan
 ```
 
 - Скопіюємо згенеровані зміни в блоки ресурсів aws_instance.manual_ec2_imported та aws_security_group.manual_sg_imported
-  ![img_7.png](img_7.png)
+  ![img_7.png](screenshots/img_7.png)
 
 - додаємо блоки до корневого файлу main.tf
 ```hcl
@@ -614,7 +614,7 @@ resource "aws_instance" "manual_ec2_imported" {
 ```shell
 terraform plan
 ```
-![img_8.png](img_8.png)
+![img_8.png](screenshots/img_8.png)
 
 No changes. Your infrastructure matches the configuration. (або подібне повідомлення). Це означає, що Terraform тепер повністю контролює імпортовані ресурси і бачить їх такими, якими вони є в AWS.
 
@@ -626,7 +626,7 @@ No changes. Your infrastructure matches the configuration. (або подібн�
 ```bash
 terraform destroy --auto-approve
 ```
-![img_9.png](img_9.png)
+![img_9.png](screenshots/img_9.png)
 
 - видаляємо всі файли Terraform, щоб почати з чистого аркуша:
 
