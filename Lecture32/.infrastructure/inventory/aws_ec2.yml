@@ -1,0 +1,9 @@
+---
+plugin: amazon.aws.aws_ec2
+regions:
+  - eu-north-1
+filters:
+  tag:Project: MyAnsibleProject
+keyed_groups:
+  - key: tags.Role
+    prefix: tag_Role

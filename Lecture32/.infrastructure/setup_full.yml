@@ -1,0 +1,9 @@
+---
+- name: Full server setup for webservers
+  hosts: tag_Role_webserver
+  vars_files:
+    - secret_vars.yml
+  roles:
+    - baseline
+    - firewall
+    - nginx

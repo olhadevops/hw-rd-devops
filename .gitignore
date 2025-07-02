@@ -1,1 +1,14 @@
-.idea
+# IDE specific
+.idea/
+
+# Python virtual environment
+venv/
+
+# Directory with private keys
+keys/
+
+# Ansible temporary files
+*.retry
+
+# Optional: For maximum security, ignore the encrypted vault file
+secret_vars.yml
