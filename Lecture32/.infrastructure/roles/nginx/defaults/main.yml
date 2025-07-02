@@ -1,0 +1,3 @@
+---
+page_title: "Welcome to our Ansible-managed server!"
+welcome_message: "This page was deployed using Ansible."

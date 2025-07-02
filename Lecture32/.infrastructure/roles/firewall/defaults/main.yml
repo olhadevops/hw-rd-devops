@@ -1,0 +1,5 @@
+---
+firewall_allowed_tcp_ports:
+  - "22"   # SSH (дуже важливо!)
+  - "80"   # HTTP
+  - "443"  # HTTPS

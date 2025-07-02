@@ -1,0 +1,23 @@
+---
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+    cache_valid_time: 3600
+  become: yes
+
+- name: Install base packages
+  ansible.builtin.apt:
+    name:
+      - vim
+      - git
+      - mc
+      - ufw
+    state: present
+  become: yes
+
+- name: Set up authorized keys for the user
+  ansible.posix.authorized_key:
+    user: "{{ ansible_user }}"
+    state: present
+    key: "{{ ssh_public_key }}"
+  become: yes

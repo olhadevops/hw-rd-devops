@@ -1,0 +1,8 @@
+---
+- name: Apply baseline and firewall configuration
+  hosts: all
+  vars_files:
+    - secret_vars.yml
+  roles:
+    - baseline
+    - firewall

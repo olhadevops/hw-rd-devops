@@ -1,0 +1,5 @@
+---
+ansible_user: ubuntu
+
+page_title: "Ansible Deployed Website"
+welcome_message: "It works! This page was deployed automatically."
