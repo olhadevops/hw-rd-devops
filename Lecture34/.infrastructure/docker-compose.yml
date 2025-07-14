@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  jenkins:
+    build: . # Збирати образ з Dockerfile у поточній директорії
+    container_name: my-jenkins
+    ports:
+      - "8080:8080" # Порт для веб-інтерфейсу
+      - "50000:50000" # Порт для агентів
+    volumes:
+      - jenkins_home:/var/jenkins_home # Зберігаємо дані Jenkins
+    restart: unless-stopped
+
+volumes:
+  jenkins_home: {}
